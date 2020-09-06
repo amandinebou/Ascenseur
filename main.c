@@ -62,7 +62,7 @@ int main() {
 
   // generate list of waiting persons
   int nbFloor = 5;
-PersonList **waitingLists = malloc(nbFloor*sizeof(PersonList*));
+  PersonList **waitingLists = malloc(nbFloor*sizeof(PersonList*));
   for(int currentFloor=0; currentFloor < nbFloor; currentFloor++) {
     waitingLists[currentFloor] = NULL;
     int nbPerson = 5; // 5 persons in the waiting list
@@ -116,4 +116,24 @@ PersonList **waitingLists = malloc(nbFloor*sizeof(PersonList*));
   endwin(); // correct ending of ncurses
 
   return 0;
+}
+
+PersonList* enterElevator(Elevator*e, PersonList *list) {
+  //verifier capacité ascenseur
+  //si scr = currenFloor : ajoutés e*persons
+  //supprimé wainting list
+}
+
+PersonList* exitElevator(Elevator *e) {
+  int nbPerson = sizeof(e -> persons);
+  for (int i = 0; i < nbPerson; i++) {
+    Person *personne = *(e -> persons + i);
+    if (personne -> dest == e -> currentFloor) {
+      //supprimer de l'ascenseur
+    }
+  }
+}
+
+void stepElevator(Building *b) {
+
 }

@@ -2,8 +2,8 @@
 #define PERSON_H
 
 typedef struct _Person {
-    int src;
-    int dest;
+    int src;    //provenance
+    int dest;   //destination
 } Person;
 
 typedef struct _PersonList {
