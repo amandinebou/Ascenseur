@@ -19,8 +19,9 @@ typedef struct _Building {
 Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons);
 Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingLists);
 
+int occupation(Elevator *e);
 PersonList* exitElevator(Elevator *e);
-PersonList* enterElevator(Elevator *e, PersonList *list);
+PersonList* enterElevator(Elevator *e, PersonList *waitinglist);
 void stepElevator(Building *b);
 
 #endif

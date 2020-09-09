@@ -13,7 +13,7 @@ Person* createPerson(int src, int dest) {
 }
 
 PersonList* insert(Person *p, PersonList *list) {
-    //creer nouvel element, lui attribuer p et next = NULL puis recursivite
+    //ajoute une personne à une liste d'attente
     PersonList *newPerson = (PersonList*)malloc(sizeof(PersonList));
     newPerson -> person = p;
     newPerson -> next = NULL;
