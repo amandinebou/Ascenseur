@@ -125,13 +125,19 @@ PersonList* enterElevator(Elevator*e, PersonList *list) {
 }
 
 PersonList* exitElevator(Elevator *e) {
-  int nbPerson = sizeof(e -> persons);
-  for (int i = 0; i < nbPerson; i++) {
-    Person *personne = *(e -> persons + i);
-    if (personne -> dest == e -> currentFloor) {
-      //supprimer de l'ascenseur
+  PersonList* personInside = e -> persons;
+  if (personInside != NULL) {
+    Person* passager = personInside -> person;
+    if (passager -> dest == e -> currentFloor) {
+      //suprimer de l'ascenseur, baisser nb personnes dans ascenseur
     }
   }
+  //for (int i = 0; i < nbPerson; i++) {
+    //Person *personne = *(e -> persons + i);
+    //if (personne -> dest == e -> currentFloor) {
+      //supprimer de l'ascenseur
+    //}
+  //}
 }
 
 void stepElevator(Building *b) {
