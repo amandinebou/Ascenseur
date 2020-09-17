@@ -109,7 +109,7 @@ int main() {
 
     DisplayBuilding(win, building);
 
-    wrefresh(win); // actual display function
+    wrefresh(win); // actual display function 
 
   }
 
