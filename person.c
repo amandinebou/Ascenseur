@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include <ncurses.h>
+//#include <ncurses.h>
 
 #include "person.h"
 
@@ -28,7 +28,6 @@ PersonList* insert(Person *p, PersonList *list) {
         temp = temp -> next;
     }
     temp -> next = newPerson;
-    free (temp);
     return list;
 }
 

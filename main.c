@@ -96,7 +96,7 @@ int main() {
     } else {
       int level = input - '0';
       if(0 <= level && level < nbFloor) {
-    building->elevator->targetFloor = level;
+        building->elevator->targetFloor = level;
       }
     }
 
