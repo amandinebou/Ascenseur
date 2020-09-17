@@ -22,11 +22,13 @@ PersonList* insert(Person *p, PersonList *list) {
         return newPerson;
     }
     /* Insertion de l'élément à la fin de la liste : on la parcourt à l'aide d'un pointeur temporaire */
-    PersonList *temp = list;
+    PersonList *temp = (PersonList*)malloc(sizeof(PersonList));
+    temp = list;
     while (temp -> next != NULL) {
         temp = temp -> next;
     }
     temp -> next = newPerson;
+    free (temp);
     return list;
 }
 

@@ -29,46 +29,56 @@ int occupation(Elevator *e) {
     if (personInside == NULL) {
         return 0;
     }
-    PersonList *temp = personInside;
+    PersonList *temp = (PersonList*)malloc(sizeof(PersonList));
+    temp = personInside;
     while (temp -> person != NULL) {
         compteur++;
         temp = temp -> next;
     }
+    free (temp);
     return compteur;
 }
 
 PersonList* enterElevator(Elevator*e, PersonList *waitinglist) {
   //vérifie qu'il reste de la place dans l'ascenseur
   int placesDispo = (e -> capacity) - occupation(e);
-  PersonList *temp = waitinglist;
+  PersonList *temp = (PersonList*)malloc(sizeof(PersonList));
+  temp = waitinglist;
   while (placesDispo > 0 && waitinglist != NULL) {
-      Person *passager = temp -> person;
+      Person* passager = (Person*)malloc(sizeof(Person));
+      passager = temp -> person;
       (e -> persons) = insert(passager, e -> persons);
       temp = temp -> next;
+      waitinglist = temp;
   }
-
-  //si scr = currenFloor : ajoutés e*persons
-  //supprimé wainting list
-
+  free (temp);
+  return waitinglist;
 }
 
 PersonList* exitElevator(Elevator *e) {
   PersonList* personInside = (PersonList*)malloc(sizeof(PersonList));
   personInside = e -> persons;
   if (personInside != NULL) {
-      PersonList *precedent = personInside;
-      PersonList *suivant = precedent;
-      if (precedent -> next == NULL && ((precedent -> person) -> dest = e -> currentFloor)) {
-        return NULL;
+      PersonList *precedent = (PersonList*)malloc(sizeof(PersonList));
+      PersonList *suivant = (PersonList*)malloc(sizeof(PersonList));
+      precedent = personInside;
+      suivant = precedent;
+      while ((precedent -> person) -> dest == e -> currentFloor && suivant != NULL) {
+        precedent = suivant;
+        suivant = suivant -> next;
       }
       while (precedent -> next != NULL) {
+          suivant = precedent -> next;
           //vérification que la personne veut descendre
-          if ((precedent -> person) -> dest == e -> currentFloor) {
+          if ((suivant -> person) -> dest == e -> currentFloor) {
             //suppression de la personne qui quitte l'ascenseur
             precedent -> next = suivant -> next;
-            return personInside;
           }
+          precedent = precedent -> next;
       }
+      free (precedent);
+      free (suivant);
+      return personInside;
   } else {
       return NULL;
   }
@@ -76,5 +86,16 @@ PersonList* exitElevator(Elevator *e) {
 
 
 void stepElevator(Building *b) {
-
+    /*Elevator* e = (Elevator*)malloc(sizeof(Elevator));
+    e = b -> elevator;
+    if (e -> currentFloor == e -> targetFloor) {
+        e -> persons = exitElevator(e);
+        e -> persons = enterElevator(e, (b -> waitingLists)[ e-> currentFloor]);
+    } else {
+        if (e -> targetFloor - e -> currentFloor > 0) {
+            e -> currentFloor ++;
+        } else {         
+            e -> currentFloor --;
+        }
+    }*/
 }
