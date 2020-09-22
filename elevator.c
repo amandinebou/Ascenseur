@@ -94,7 +94,7 @@ void stepElevator(Building *b) {
         (b -> waitingLists)[ e-> currentFloor] = enterElevator(e, (b -> waitingLists)[ e-> currentFloor]);
     } else {
         //sinon on incrémente ou décrémente l'étage de l'ascenseur pour aller dans la direction de la destination
-        if ((e -> targetFloor) - (e -> currentFloor > 0)) {
+        if ((e -> targetFloor) - (e -> currentFloor) > 0) {
             (e -> currentFloor)++;
         } else {         
             (e -> currentFloor)--;
