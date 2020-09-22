@@ -32,7 +32,7 @@ int occupation(Elevator *e) {
     //pointeur temporaire pour parcourir la liste
     PersonList *temp = (PersonList*)malloc(sizeof(PersonList));
     temp = personInside;
-    while (temp -> person != NULL) {
+    while (temp != NULL) {
         compteur++;
         temp = temp -> next;
     }
